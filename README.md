@@ -52,12 +52,3 @@ $ npm coverage
 $ npm lint
 $ npm format
 ```
-
-### Learn More
-
-1. Learn more about:
-
-- the [Node architecture choices](https://imagine.ai/docs/architecture-node) used.
-- the [best practices](https://imagine.ai/docs/best-practices) followed.
-
-2. Imagine is in beta - here are the [known issues](https://imagine.ai/docs/known_issues) that we are working to fix.
