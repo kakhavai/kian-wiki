@@ -1,4 +1,4 @@
-FROM node:16.0-slim
+FROM node:16.0
 
 # Create app directory
 WORKDIR /usr/src/app
@@ -16,4 +16,4 @@ RUN npm install
 COPY . .
 
 EXPOSE 8000
-CMD npm run start-dev
+CMD npm run start
