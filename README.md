@@ -1,9 +1,5 @@
 # kian_wiki app
 
-This app was bootstrapped with [Imagine.ai](https://imagine.ai) 💛
-
-> Imagine.ai is an app starter on steroids!
-
 ### Run the app in terminal
 
 1. Start a Postgres database server on your machine or in the cloud.
