@@ -49,11 +49,11 @@ jobs:
           ${{ runner.OS }}-node-
           ${{ runner.OS }}-
     - name: Install dependencies
-      run: npm run install
+      run: npm install
     - name: Run tests
-      run: npm run test 
+      run: npm test 
     - name: Create coverage report
-      run: yarn coverage
+      run: npm coverage
     # Uncomment after setting CODECOV_TOKEN in your repository
     # - name: Upload coverage to Codecov
     #   uses: codecov/codecov-action@v1
