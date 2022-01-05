@@ -12,7 +12,7 @@ describe('Project tests', () => {
   });
 
   afterAll(async () => {
-    await app.close();
+    await app.closeServer();
   });
 
   test('/POST - Response with a new created project', async () => {
