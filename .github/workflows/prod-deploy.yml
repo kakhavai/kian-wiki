@@ -12,6 +12,11 @@ on:
 env:
   REGISTRY: ghcr.io
   CONTAINER: nodejs-image
+  DB_DIALECT: postgres
+  POSTGRES_DB: ${{ secrets.POSTGRES_DB}}
+  POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
+  POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
+  POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }} 
 
 jobs:
   push_to_registry:
