@@ -43,7 +43,7 @@ jobs:
       
       # Push images
       - name: Push images
-        run: docker-compose push
+        run: docker push
   # deploy:
   #   needs: [push_to_registry]
   #   name: Deploy to DigitalOcean
