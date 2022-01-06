@@ -43,7 +43,7 @@ jobs:
       
       # Push images
       - name: Push images
-        run: docker push
+        run: docker push kian-wiki-nodeserver:latest && docker push kian-wiki-nginx:latest
   # deploy:
   #   needs: [push_to_registry]
   #   name: Deploy to DigitalOcean
