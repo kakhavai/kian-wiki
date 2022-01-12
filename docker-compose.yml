@@ -1,7 +1,7 @@
 version: "3.8"
 services:
   nodeserver:
-    image: kian-wiki-nodeserver
+    image: ghcr.io/kakhavai/kian-wiki-nodeserver
     build:
       context: ./
     expose:
@@ -15,10 +15,10 @@ services:
       - POSTGRES_PASSWORD
       - POSTGRES_HOST
   database:
-    image: kian-wiki-database
+    image: ghcr.io/kakhavai/kian-wiki-database
     build:
       context: ./postgres
-    container_name: anything
+    container_name: kian-wiki-database
     hostname: database
     restart: always
     environment:
@@ -28,7 +28,7 @@ services:
       - POSTGRES_PASSWORD
       - POSTGRES_HOST
   nginx:
-    image: kian-wiki-nginx
+    image: ghcr.io/kakhavai/kian-wiki-nginx
     restart: always
     build:
       context: ./nginx

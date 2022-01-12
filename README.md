@@ -52,3 +52,15 @@ $ npm coverage
 $ npm lint
 $ npm format
 ```
+
+
+
+### Helpful docker commands
+
+```
+$ docker compose --env-file .env up
+$ echo %CR_PAT% | docker login ghcr.io -u ${{ github.actor }} --password-stdin 
+$ docker pull ghcr.io/kakhavai/kian-wiki-database
+$ docker pull ghcr.io/kakhavai/kian-wiki-nginx
+$ docker pull ghcr.io/kakhavai/kian-wiki-nodeserver
+```
