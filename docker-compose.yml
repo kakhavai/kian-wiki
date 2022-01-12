@@ -9,8 +9,12 @@ services:
     depends_on:
       - database
   database:
-    image: postgres
+    image: kian-wiki-database
+    build:
+      context: ./postgres
+    container_name: anything
     hostname: database
+    restart: always
     environment:
       - DB_DIALECT
       - POSTGRES_DB
