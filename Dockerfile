@@ -23,6 +23,7 @@ RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 
+RUN PWD
 
 EXPOSE 8000
 
