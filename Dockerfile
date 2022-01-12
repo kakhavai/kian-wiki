@@ -5,8 +5,6 @@ FROM node:16.0
 RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
-RUN pwd
-
 # Install app dependencies
 COPY package.json /usr/src/app/
 
@@ -19,13 +17,15 @@ RUN apt-get install dumb-init
 RUN npm install
 
 
+
 # If you are building your code for production
 # change start-dev for start
 
 # Bundle app source
 COPY . /usr/src/app
 
-RUN pwd
+#build server
+RUN npm run build
 
 EXPOSE 8000
 
