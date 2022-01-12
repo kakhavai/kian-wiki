@@ -2,10 +2,11 @@ FROM node:16.0
 
 
 # Create app directory
+RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Install app dependencies
-COPY package.json ./
+COPY package.json /usr/src/app/
 
 RUN apt-get update
 
@@ -20,7 +21,7 @@ RUN npm install
 # change start-dev for start
 
 # Bundle app source
-COPY . .
+COPY . /usr/src/app
 
 
 EXPOSE 8000
