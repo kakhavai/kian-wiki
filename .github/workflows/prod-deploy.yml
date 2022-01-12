@@ -32,33 +32,20 @@ jobs:
       # Check out the repo    
       - name: Checkout
         uses: actions/checkout@v2
-
-
-      - name: Push to GitHub Packages
-        uses: docker/build-push-action@v1
-        with:
-          username: ${{ github.actor }}
-          password: ${{ secrets.CR_PAT }}
-          registry: ${{ env.REGISTRY }}
-          repository: ${{ github.repository }}
-          tag_with_ref: true
-
-
-
-      # # Build the images    
-      # - name: Build the docker-compose stack  
-      #   run: docker-compose build
       
-      # # List images
-      # - name: List images
-      #   run: docker images
+      # Build the images    
+      - name: Build the docker-compose stack  
+        run: docker-compose build
+      
+      # List images
+      - name: List images
+        run: docker images
+      
+      # Push images
+      - name: Push images
+        run: docker push kian-wiki-nodeserver:latest && docker push kian-wiki-nginx:latest && docker push kian-wiki-database:latest
 
-
-
-
-      # # Push images
-      # - name: Push images
-      #   run: docker push kian-wiki-nodeserver:latest && docker push kian-wiki-nginx:latest
+        
   # deploy:
   #   needs: [push_to_registry]
   #   name: Deploy to DigitalOcean
