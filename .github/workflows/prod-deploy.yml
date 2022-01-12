@@ -41,6 +41,10 @@ jobs:
       # List images
       - name: List images
         run: docker images
+
+      # Tag images
+      - name: List images
+        run: docker tag kian-wiki-nodeserver:latest ghcr.io/kakhavai/kian-wiki-nodeserver:latest && docker tag kian-wiki-nginx:latest ghcr.io/kakhavai/kian-wiki-nginx:latest && docker tag kian-wiki-database:latest ghcr.io/kakhavai/kian-wiki-database:latest
       
       # Push images
       - name: Push images
