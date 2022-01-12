@@ -33,7 +33,7 @@ jobs:
       # Check out the repo    
       - name: Checkout
         uses: actions/checkout@v2
-      
+
       # Build the images    
       - name: Build the docker-compose stack  
         run: docker-compose up
@@ -43,7 +43,7 @@ jobs:
         run: docker images
 
       # Tag images
-      - name: List images
+      - name: Tag images
         run: docker tag kian-wiki-nodeserver:latest ghcr.io/kakhavai/kian-wiki-nodeserver:latest && docker tag kian-wiki-nginx:latest ghcr.io/kakhavai/kian-wiki-nginx:latest && docker tag kian-wiki-database:latest ghcr.io/kakhavai/kian-wiki-database:latest
       
       # Push images
