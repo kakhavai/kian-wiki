@@ -8,6 +8,12 @@ services:
       - 8000
     depends_on:
       - database
+    environment:
+      - DB_DIALECT
+      - POSTGRES_DB
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+      - POSTGRES_HOST
   database:
     image: kian-wiki-database
     build:
