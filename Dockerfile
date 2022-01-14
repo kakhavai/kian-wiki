@@ -14,7 +14,7 @@ RUN apt-get update
 RUN apt-get install dumb-init
 
 
-RUN npm install
+RUN npm clean install
 
 
 
