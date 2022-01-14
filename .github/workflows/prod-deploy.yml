@@ -55,10 +55,10 @@ jobs:
       - name: Setup SSH connection
         uses: webfactory/ssh-agent@v0.5.1
         with:
-          ssh-private-key: ${{ secrets.SSH_KEY }}
+          ssh-private-key: ${{ secrets.PROD_SSH_KEY }}
       - name: Pull latest container
         run: |
-            ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}} "pwd"
+            ssh ${{secrets.PROD_SSH_USER}}@${{secrets.PROD_SSH_HOST}} "pwd"
   #
   #         ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}} "docker pull ${{env.REGISTRY}}/${{env.REPO}}:latest"
   #     - name: Start docker container
