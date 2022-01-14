@@ -23,6 +23,7 @@
     "@admin-bro/express": "^3.1.0",
     "@admin-bro/sequelize": "^1.2.1",
     "admin-bro": "^3.2.5",
+    "clean": "^4.0.2",
     "cookie-parser": "~1.4.4",
     "dayjs": "^1.10.4",
     "dotenv": "^10.0.0",
