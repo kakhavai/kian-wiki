@@ -14,13 +14,7 @@ RUN apt-get update
 RUN apt-get install dumb-init
 
 # Clean install npm packages
-RUN npm ci
-
-# Audit packages
-RUN npm audit
-
-# Fix audited
-RUN npm audit fix
+RUN npm install
 
 # If you are building your code for production
 # change start-dev for start
