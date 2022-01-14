@@ -59,11 +59,6 @@ jobs:
       - name: Adding Known Hosts
         run: ssh-keyscan -H ${{ secrets.PROD_SSH_HOST }} >> ~/.ssh/known_hosts
       
-      - name: Pull latest container
+      - name: Pull and start latest container
         run: |
-            ssh ${{secrets.PROD_SSH_USER}}@${{secrets.PROD_SSH_HOST}} "pwd"
-  #
-  #         ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}} "docker pull ${{env.REGISTRY}}/${{env.REPO}}:latest"
-  #     - name: Start docker container
-  #       run: |
-  #         ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}} "docker run -p 8080:8080 -d --name=${{env.CONTAINER}} ${{env.REGISTRY}}/${{env.REPO}}:latest"
+          ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}} "docker-compose up -d"
