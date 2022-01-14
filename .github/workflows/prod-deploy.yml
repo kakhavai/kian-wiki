@@ -51,21 +51,19 @@ jobs:
         run: docker push ghcr.io/kakhavai/kian-wiki-nodeserver:latest && docker push ghcr.io/kakhavai/kian-wiki-nginx:latest && docker push ghcr.io/kakhavai/kian-wiki-database:latest
 
         
-  # deploy:
-  #   needs: [push_to_registry]
-  #   name: Deploy to DigitalOcean
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Setup SSH connection
-  #       uses: webfactory/ssh-agent@v0.5.1
-  #       with:
-  #         ssh-private-key: ${{ secrets.SSH_KEY }}
-
-  #     - name: Adding Known Hosts
-  #       run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-
-  #     - name: Pull latest container
-  #       run: |
+  deploy:
+    needs: [push_to_registry]
+    name: Deploy to DigitalOcean
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH connection
+        uses: webfactory/ssh-agent@v0.5.1
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+      - name: Pull latest container
+        run: |
+            ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}} "pwd"
+  #
   #         ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}} "docker pull ${{env.REGISTRY}}/${{env.REPO}}:latest"
   #     - name: Start docker container
   #       run: |
