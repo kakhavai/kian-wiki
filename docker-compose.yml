@@ -18,7 +18,7 @@ services:
     image: ghcr.io/kakhavai/kian-wiki-database
     build:
       context: ./postgres
-    container_name: anything
+    container_name: kian-wiki-database
     hostname: database
     restart: always
     environment:
