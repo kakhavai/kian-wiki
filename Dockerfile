@@ -25,7 +25,7 @@ COPY . /usr/src/app
 # Build server
 RUN npm run build
 
-EXPOSE 8000
+EXPOSE 80
 
 #CMD npm run start
 CMD ["dumb-init", "node", "dist/server/index.js" ]

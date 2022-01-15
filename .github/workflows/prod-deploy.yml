@@ -19,33 +19,33 @@ env:
   POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }} 
 
 jobs:
-  # push_to_registry:
-  #   name: Push Docker image to GitHub Packages
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Check out the repo
-  #       uses: actions/checkout@v2
+  push_to_registry:
+    name: Push Docker image to GitHub Packages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
 
-  #     - name: Log into registry
-  #       run: echo "${{ secrets.CR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin  
+      - name: Log into registry
+        run: echo "${{ secrets.CR_PAT }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin  
 
 
-  #     # Check out the repo    
-  #     - name: Checkout
-  #       uses: actions/checkout@v2
+      # Check out the repo    
+      - name: Checkout
+        uses: actions/checkout@v2
 
-  #     # Build the images    
-  #     - name: Build the docker-compose stack  
-  #       run: docker-compose build
+      # Build the images    
+      - name: Build the docker-compose stack  
+        run: docker-compose build
       
-  #     # List images
-  #     - name: List images
-  #       run: docker images
+      # List images
+      - name: List images
+        run: docker images
 
-  #     # Push images
-  #     - name: Push images
-  #       run: docker push ghcr.io/kakhavai/kian-wiki-nodeserver:latest && docker push ghcr.io/kakhavai/kian-wiki-nginx:latest && docker push ghcr.io/kakhavai/kian-wiki-database:latest
-
+      # Push images
+      - name: Push images
+        run: docker push ghcr.io/kakhavai/kian-wiki-nodeserver:latest && docker push ghcr.io/kakhavai/kian-wiki-nginx:latest && docker push ghcr.io/kakhavai/kian-wiki-database:latest
+ 
         
   deploy:
     name: Deploy to DigitalOcean
