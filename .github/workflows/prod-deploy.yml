@@ -36,7 +36,7 @@ jobs:
 
       # Build the images    
       - name: Build the docker-compose stack  
-        run: docker-compose build
+        run: docker-compose -f docker-compose-local.yml build
       
       # List images
       - name: List images
