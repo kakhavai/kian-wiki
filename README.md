@@ -26,8 +26,8 @@ $ npm start
 Build the docker container and get it up and running.
 
 ```
-$ docker-compose build
-$ docker-compose up
+$ docker-compose -f docker-compose-local.yml build
+$ docker-compose -f docker-compose-local.yml up
 ```
 
 ### Make API calls against the server
@@ -58,6 +58,9 @@ $ npm format
 ### Helpful docker commands
 
 ```
+$ docker kill $(docker ps -q)
+$ docker rm $(docker ps -a -q)
+$ docker rmi $(docker images -q)
 $ docker compose --env-file .env up
 $ echo %CR_PAT% | docker login ghcr.io -u ${{ github.actor }} --password-stdin 
 $ docker pull ghcr.io/kakhavai/kian-wiki-database
