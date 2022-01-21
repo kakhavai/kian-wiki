@@ -13,6 +13,12 @@ import { errorHandler, responseHandler, pageNotFoundHandler, initResLocalsHandle
 
 const app = express();
 
+const clientDir = '../client';
+
+function serveIndex(req, res) {
+  res.sendFile(path.join(clientDir, '/index.html'));
+}
+
 // Swagger
 app.use('/swagger', swaggerUi.serveFiles(swaggerDocument), swaggerUi.setup(swaggerDocument));
 
@@ -38,5 +44,7 @@ app.use(errorHandler);
 
 // Page not found
 app.use(pageNotFoundHandler);
+
+app.get('/', serveIndex);
 
 export { app };

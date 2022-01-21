@@ -1,3 +1,7 @@
+# Certbot data
+
+data/
+
 # Logs
 logs
 *.log
