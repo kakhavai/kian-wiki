@@ -33,6 +33,9 @@ services:
     build:
       context: ./nginx
     ports:
-      - "8000:80"
+      - "80:80"
+      - "443:443"
     depends_on:
       - nodeserver
+    environment:
+      - NODE_ENV
