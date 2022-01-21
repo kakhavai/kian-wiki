@@ -1,6 +1,7 @@
 FROM nginx
-COPY default.conf /etc/nginx/conf.d/default.conf
 RUN mkdir /usr/mkcert
+COPY default.conf /etc/nginx/conf.d/default.conf
+COPY local.default.conf /usr/local.default.conf
 WORKDIR /usr/mkcert 
 COPY setup.sh /usr/mkcert/setup.sh
 RUN chmod +x setup.sh

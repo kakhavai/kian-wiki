@@ -2,6 +2,8 @@
 if [ "$NODE_ENV" = "development" ]
 then
     echo "Node environment in development... Creating self signed certs."
+    cp /usr/local.default.conf /etc/nginx/conf.d/default.conf
+    cat /etc/nginx/conf.d/default.conf
     apt-get update
     apt-get install wget
     apt-get install -y libnss3-tools
