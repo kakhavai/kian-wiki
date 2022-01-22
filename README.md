@@ -67,3 +67,4 @@ $ docker pull ghcr.io/kakhavai/kian-wiki-database
 $ docker pull ghcr.io/kakhavai/kian-wiki-nginx
 $ docker pull ghcr.io/kakhavai/kian-wiki-nodeserver
 ```
+
