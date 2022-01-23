@@ -9,5 +9,9 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "daily"
+<<<<<<< HEAD
     target-branch: "development"
 
+=======
+    target-branch: "development"
+>>>>>>> af1c7030b7e927565c743134ccb906f228bd9a47
