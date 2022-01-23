@@ -62,4 +62,4 @@ jobs:
       
       - name: Pull and start latest container
         run: |
-          ssh ${{secrets.PROD_SSH_USER}}@${{secrets.PROD_SSH_HOST}} "docker-compose down && docker-compose up -d"
+          ssh ${{secrets.PROD_SSH_USER}}@${{secrets.PROD_SSH_HOST}} "docker network prune -f && docker-compose down && docker-compose up -d"
