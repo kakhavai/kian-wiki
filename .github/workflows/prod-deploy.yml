@@ -4,7 +4,7 @@ name: Build, Push and Deploy Node.js app
 on:
   # Triggers the workflow on push events but only for the master branch
   push:
-    branches: [master]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -36,37 +36,30 @@ jobs:
 
       # Build the images    
       - name: Build the docker-compose stack  
-        run: docker-compose build
+        run: docker-compose -f docker-compose-local.yml build
       
       # List images
       - name: List images
         run: docker images
 
-      # Tag images
-      - name: Tag images
-        run: docker tag kian-wiki-nodeserver:latest ghcr.io/kakhavai/kian-wiki-nodeserver:latest && docker tag kian-wiki-nginx:latest ghcr.io/kakhavai/kian-wiki-nginx:latest && docker tag kian-wiki-database:latest ghcr.io/kakhavai/kian-wiki-database:latest
-      
       # Push images
       - name: Push images
         run: docker push ghcr.io/kakhavai/kian-wiki-nodeserver:latest && docker push ghcr.io/kakhavai/kian-wiki-nginx:latest && docker push ghcr.io/kakhavai/kian-wiki-database:latest
-
+ 
         
-  # deploy:
-  #   needs: [push_to_registry]
-  #   name: Deploy to DigitalOcean
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #     - name: Setup SSH connection
-  #       uses: webfactory/ssh-agent@v0.5.1
-  #       with:
-  #         ssh-private-key: ${{ secrets.SSH_KEY }}
+  deploy:
+    name: Deploy to DigitalOcean
+    needs: push_to_registry
+    runs-on: ubuntu-latest
+    steps:
+      - name: Setup SSH connection
+        uses: webfactory/ssh-agent@v0.5.1
+        with:
+          ssh-private-key: ${{ secrets.PROD_SSH_KEY }}
 
-  #     - name: Adding Known Hosts
-  #       run: ssh-keyscan -H ${{ secrets.SSH_HOST }} >> ~/.ssh/known_hosts
-
-  #     - name: Pull latest container
-  #       run: |
-  #         ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}} "docker pull ${{env.REGISTRY}}/${{env.REPO}}:latest"
-  #     - name: Start docker container
-  #       run: |
-  #         ssh ${{secrets.SSH_USER}}@${{secrets.SSH_HOST}} "docker run -p 8080:8080 -d --name=${{env.CONTAINER}} ${{env.REGISTRY}}/${{env.REPO}}:latest"
+      - name: Adding Known Hosts
+        run: ssh-keyscan -H ${{ secrets.PROD_SSH_HOST }} >> ~/.ssh/known_hosts
+      
+      - name: Pull and start latest container
+        run: |
+          ssh ${{secrets.PROD_SSH_USER}}@${{secrets.PROD_SSH_HOST}} "docker network prune -f && docker-compose down && docker-compose up -d"

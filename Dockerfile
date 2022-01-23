@@ -13,10 +13,8 @@ RUN apt-get update
 # Add tool which will fix init process
 RUN apt-get install dumb-init
 
-
+# Clean install npm packages
 RUN npm install
-
-
 
 # If you are building your code for production
 # change start-dev for start
@@ -24,7 +22,7 @@ RUN npm install
 # Bundle app source
 COPY . /usr/src/app
 
-#build server
+# Build server
 RUN npm run build
 
 EXPOSE 8000
