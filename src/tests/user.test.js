@@ -11,9 +11,9 @@ describe('User tests', () => {
     await startDatabase();
   });
 
-  afterAll(async () => {
-    await app.close();
-  });
+  // afterAll(async () => {
+  //   await app.closeServer();
+  // });
 
   test('/POST - Response with a new created user', async () => {
     const fakeUser = await buildUser({});

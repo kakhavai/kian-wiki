@@ -11,9 +11,9 @@ describe('Project tests', () => {
     await startDatabase();
   });
 
-  afterAll(async () => {
-    await app.close();
-  });
+  // afterAll(async () => {
+  //   await app.close();
+  // });
 
   test('/POST - Response with a new created project', async () => {
     const relCreatorDict = await buildUser({});

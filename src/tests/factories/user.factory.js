@@ -1,7 +1,7 @@
 import { random } from 'faker';
 import { User } from 'data/models';
 
-const buildUser = async (userFks) => {
+const buildUser = async () => {
   const resUser = {};
 
   resUser.username = random.word().slice(0, 80);
