@@ -32,7 +32,7 @@
     "clean": "^4.0.2",
     "cookie-parser": "~1.4.4",
     "dayjs": "^1.10.4",
-    "dotenv": "^14.2.0",
+    "dotenv": "^16.0.0",
     "eslint": "^8.7.0",
     "eslint-config-airbnb": "^19.0.4",
     "eslint-config-prettier": "^8.3.0",
