@@ -7,6 +7,9 @@ COPY setup.sh /usr/mkcert/setup.sh
 RUN chmod +x setup.sh
 CMD ["./setup.sh"]
 
+
+
+
 # FROM nginx
 # COPY local.default.conf /etc/nginx/conf.d/default.conf
 # RUN apt-get update
