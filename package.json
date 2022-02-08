@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "babel src/client --out-dir dist/client --copy-files && babel src -d dist",
+    "build": "npm run build --prefix src/client && babel src/client/build --out-dir dist/client --copy-files && babel src -d dist --ignore src/client,src/client2",
     "start": "npm run build && node dist/server/index.js",
     "start-dev": "npm run build && node dist/server/index.js",
+    "client": "npm run start --prefix src/client",
+    "dev-client-server": "concurrently \"npm run start\" \"npm run client\"",
     "nodemon-dev": "nodemon src/server --exec babel-node",
     "docker:build": "docker-compose up --build",
     "docker:up": "docker-compose up",
