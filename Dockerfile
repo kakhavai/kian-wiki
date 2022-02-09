@@ -16,6 +16,12 @@ RUN apt-get install dumb-init
 # Clean install npm packages
 RUN npm install
 
+# Install serve
+RUN npm install -g serve 
+
+#install concurrently
+RUN npm install -g concurrently
+
 # If you are building your code for production
 # change start-dev for start
 
@@ -26,6 +32,15 @@ COPY . /usr/src/app
 RUN npm run build
 
 EXPOSE 8000
+EXPOSE 3000
+
+#RUN serve -s src/client/build
+
 
 #CMD npm run start
-CMD ["dumb-init", "node", "dist/server/index.js" ]
+#CMD ["dumb-init", "node", "dist/server/index.js"]
+CMD ["dumb-init", "npm", "run", "docker-client-server"]
+
+# "&&", "serve", "-s", "src/client/build"]
+#CMD npm run start
+#CMD ["dumb-init", "node", "dist/server/index.js" ]

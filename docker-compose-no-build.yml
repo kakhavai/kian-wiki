@@ -4,6 +4,7 @@ services:
     image: ghcr.io/kakhavai/kian-wiki-nodeserver
     expose:
       - 8000
+      - 3000
     depends_on:
       - database
     environment:

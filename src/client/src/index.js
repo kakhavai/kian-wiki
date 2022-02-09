@@ -1,8 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
+import './css/index.css';
+import App from './js/App';
+import Sidebar from './js/Sidebar'
+import 'react-pro-sidebar/dist/css/styles.css';
+
+
+//import LikeButton from './LikeButton';
+
 import reportWebVitals from './reportWebVitals';
+
+
 
 ReactDOM.render(
   <React.StrictMode>
