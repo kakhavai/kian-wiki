@@ -16,11 +16,19 @@ const app = express();
 const clientDir = '../client';
 
 function serveIndex(req, res) {
-  res.sendFile(path.join(clientDir, '/index.html'));
+  res.sendFile('index.html', { root: path.join(__dirname, '../client/html') });
 }
+
+// Static content
+
+app.use('/images', express.static( path.join(__dirname, '../client/images')));
 
 // Swagger
 app.use('/swagger', swaggerUi.serveFiles(swaggerDocument), swaggerUi.setup(swaggerDocument));
+
+
+
+
 
 // Middlewares
 app.use(logger('dev'));
@@ -36,6 +44,9 @@ app.use('/project', projectRouter);
 
 app.use('/user', userRouter);
 
+app.get('/', serveIndex);
+
+
 // Use custom response handler
 app.use(responseHandler);
 
@@ -45,6 +56,5 @@ app.use(errorHandler);
 // Page not found
 app.use(pageNotFoundHandler);
 
-app.get('/', serveIndex);
 
 export { app };

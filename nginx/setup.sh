@@ -14,5 +14,4 @@ then
 else
     echo "Node environment in production... Skipping self signed cert."
 fi
-
 nginx -g 'daemon off;'

@@ -55,7 +55,7 @@ $ npm format
 
 
 
-### Helpful docker commands
+### Helpful misc commands
 
 ```
 $ docker kill $(docker ps -q)
@@ -66,5 +66,7 @@ $ echo %CR_PAT% | docker login ghcr.io -u ${{ github.actor }} --password-stdin
 $ docker pull ghcr.io/kakhavai/kian-wiki-database
 $ docker pull ghcr.io/kakhavai/kian-wiki-nginx
 $ docker pull ghcr.io/kakhavai/kian-wiki-nodeserver
+$ POSTGRES_HOST=localhost
+$ docker-compose -f docker-compose-local.yml up
 ```
 

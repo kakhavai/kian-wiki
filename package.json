@@ -3,9 +3,13 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "babel src -d dist",
-    "start": "npm run build && dumb-init node dist/server/index.js",
-    "start-dev": "nodemon src/server --exec babel-node",
+    "build": "npm run build --prefix src/client && babel src/client/build --out-dir dist/client --copy-files && babel src -d dist --ignore src/client/**",
+    "start": "node dist/server/index.js",
+    "start-dev": "npm run build && node dist/server/index.js",
+    "client": "npm run start --prefix src/client",
+    "dev-client-server": "concurrently \"npm run start\" \"npm run client\"",
+    "docker-client-server": "concurrently \"npm run start\" \"serve -s src/client/build\"",
+    "nodemon-dev": "nodemon src/server --exec babel-node",
     "docker:build": "docker-compose up --build",
     "docker:up": "docker-compose up",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
@@ -22,7 +26,10 @@
   "dependencies": {
     "@admin-bro/express": "^3.1.0",
     "@admin-bro/sequelize": "^1.2.1",
+    "@babel/preset-react": "^7.16.7",
     "admin-bro": "^3.2.5",
+    "babel-cli": "^6.26.0",
+    "babel-preset-react-app": "^3.1.2",
     "clean": "^4.0.2",
     "cookie-parser": "~1.4.4",
     "dayjs": "^1.10.4",
@@ -41,10 +48,15 @@
     "morgan": "~1.9.1",
     "pg": "^8.6.0",
     "pg-hstore": "^2.3.3",
+    "react-icons": "^4.3.1",
+    "react-intl": "^5.24.6",
+    "react-pro-sidebar": "^0.7.1",
+    "react-scripts": "^5.0.0",
     "sequelize": "^6.14.0",
     "sqlite3": "^4.2.0",
     "swagger-ui-express": "^4.1.6",
-    "tslib": "^2.2.0"
+    "tslib": "^2.2.0",
+    "web-vitals": "^2.1.4"
   },
   "devDependencies": {
     "@babel/cli": "^7.12.10",
@@ -74,5 +86,18 @@
       "/.imagine/",
       "<rootDir>/dist/"
     ]
-  }
+  },
+  "description": "1. Start a Postgres database server on your machine or in the cloud.\r 2. Set the following environment variables in your .env file",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kakhavai/kian-wiki.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kakhavai/kian-wiki/issues"
+  },
+  "homepage": "https://github.com/kakhavai/kian-wiki#readme"
 }
