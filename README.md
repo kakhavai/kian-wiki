@@ -1,9 +1,5 @@
 # kian_wiki app
 
-This app was bootstrapped with [Imagine.ai](https://imagine.ai) 💛
-
-> Imagine.ai is an app starter on steroids!
-
 ### Run the app in terminal
 
 1. Start a Postgres database server on your machine or in the cloud.
@@ -57,11 +53,14 @@ $ npm lint
 $ npm format
 ```
 
-### Learn More
 
-1. Learn more about:
 
-- the [Node architecture choices](https://imagine.ai/docs/architecture-node) used.
-- the [best practices](https://imagine.ai/docs/best-practices) followed.
+### Helpful docker commands
 
-2. Imagine is in beta - here are the [known issues](https://imagine.ai/docs/known_issues) that we are working to fix.
+```
+$ docker compose --env-file .env up
+$ echo %CR_PAT% | docker login ghcr.io -u ${{ github.actor }} --password-stdin 
+$ docker pull ghcr.io/kakhavai/kian-wiki-database
+$ docker pull ghcr.io/kakhavai/kian-wiki-nginx
+$ docker pull ghcr.io/kakhavai/kian-wiki-nodeserver
+```
