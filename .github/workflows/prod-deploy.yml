@@ -4,7 +4,7 @@ name: Build, Push and Deploy Node.js app
 on:
   # Triggers the workflow on push events but only for the master branch
   push:
-    branches: [master]
+    branches: [main]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -36,7 +36,7 @@ jobs:
 
       # Build the images    
       - name: Build the docker-compose stack  
-        run: docker-compose build
+        run: docker-compose -f docker-compose-local.yml build
       
       # List images
       - name: List images
@@ -49,6 +49,7 @@ jobs:
         
   deploy:
     name: Deploy to DigitalOcean
+    needs: push_to_registry
     runs-on: ubuntu-latest
     steps:
       - name: Setup SSH connection
@@ -61,4 +62,4 @@ jobs:
       
       - name: Pull and start latest container
         run: |
-          ssh ${{secrets.PROD_SSH_USER}}@${{secrets.PROD_SSH_HOST}} "docker-compose up -d"
+          ssh ${{secrets.PROD_SSH_USER}}@${{secrets.PROD_SSH_HOST}} "docker network prune -f && docker-compose down && docker-compose up -d"
