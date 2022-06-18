@@ -16,7 +16,8 @@ import sidebarBg from './assets/bg2.jpg';
 import profileImage from './assets/me.jpg'
 
 
-const Aside = ({ image, collapsed, toggled, handleToggleSidebar }) => {
+
+const Aside = ({ image, collapsed, toggled, handleToggleSidebar, handlePickScreen }) => {
   return (
     <ProSidebar
       image={image ? sidebarBg : false}
@@ -65,28 +66,28 @@ const Aside = ({ image, collapsed, toggled, handleToggleSidebar }) => {
       {/* </SidebarHeader > */}
 
       {/* <SidebarContent> */}
-        <Menu iconShape="round">
+        <Menu iconShape="round" onClick={() => handlePickScreen('Education')}>
           <MenuItem
             icon={<FaHome />}
           >
-            {'Home' }
+            {'Education' }
           </MenuItem>
         </Menu>
-        <Menu iconShape="round">
+        <Menu iconShape="round" onClick={() => handlePickScreen('Experience')}>
           <MenuItem
             icon={<IoDocument />}
           >
-            {'Resume' }
+            {'Experience' }
           </MenuItem>
         </Menu>
-        <Menu iconShape="round">
+        <Menu iconShape="round" onClick={() => handlePickScreen('Stocks')}>
           <MenuItem
             icon={<GoGraph />}
           >
             {'Stock Analytics' }
           </MenuItem>
         </Menu>
-        <Menu iconShape="round">
+        <Menu iconShape="round" onClick={() => handlePickScreen('Contact')}>
           <MenuItem
             icon={<IoMdMail />}
           >
