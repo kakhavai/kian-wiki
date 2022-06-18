@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import Aside from './Aside';
 import Main from './Main';
-
+import HomeScreen from './components/HomeScreen';
 
 function Layout() {
   const [collapsed, setCollapsed] = useState(false);
   const [toggled, setToggled] = useState(false);
-  const [currentScreen, setScreen] = useState('Home');
+  const [currentScreen, setScreen] = useState(<HomeScreen/>);
 
 
   const handleCollapsedChange = (checked) => {

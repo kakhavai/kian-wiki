@@ -3,8 +3,6 @@ import {
   ProSidebar,
   Menu,
   MenuItem,
-  SubMenu,
-  SidebarHeader,
   SidebarFooter,
   SidebarContent,
 } from 'react-pro-sidebar';
@@ -14,8 +12,11 @@ import { IoMdMail } from "react-icons/io";
 import { GoGraph } from "react-icons/go";
 import sidebarBg from './assets/bg2.jpg';
 import profileImage from './assets/me.jpg'
-
-
+import EduScreen from './components/EduScreen';
+import ExperienceScreen from './components/ExperienceScreen';
+import ContactScreen from './components/ContactScreen';
+import HomeScreen from './components/HomeScreen';
+import StockScreen from './components/StockScreen';
 
 const Aside = ({ image, collapsed, toggled, handleToggleSidebar, handlePickScreen }) => {
   return (
@@ -28,7 +29,7 @@ const Aside = ({ image, collapsed, toggled, handleToggleSidebar, handlePickScree
     >
       <SidebarContent style={{borderBottomWidth: '0px'}}>
       <div style = {{textAlign: 'center'}}>
-        <img src = {profileImage} className='profile-picture'/>
+        <img src = {profileImage} className='profile-picture' alt = 'BrokenImage'/>
       </div>
       
       
@@ -56,38 +57,45 @@ const Aside = ({ image, collapsed, toggled, handleToggleSidebar, handlePickScree
               color: 'inherit'
             }}
           >
-            <a href = "https://www.instagram.com/kian.ahk" className="clickable-icon" target="_blank"><FaInstagramSquare className='sidebar-icon' /></a>
-            <a href = "https://twitter.com/kakhavain" className="clickable-icon" target="_blank"><FaTwitterSquare className='sidebar-icon'/></a>
-            <a href = "https://github.com/kakhavai" className="clickable-icon" target="_blank"><FaGithubSquare className='sidebar-icon' /></a>
-            <a href = "https://www.linkedin.com/in/kakhavain/" className="clickable-icon" target="_blank"><FaLinkedin className='sidebar-icon'/></a>
-            <a href = "https://www.chess.com/stats/live/rapid/llunchbox" className="clickable-icon" target="_blank"><div className='stacked-icon-parent'><FaChess className='stacked-icon-fg sidebar-icon'/> <FaSquare className='stacked-icon-bg sidebar-icon'/></div></a>
+            <a href = "https://www.instagram.com/kian.ahk" className="clickable-icon" target="_blank" rel="noreferrer"><FaInstagramSquare className='sidebar-icon' /></a>
+            <a href = "https://twitter.com/kakhavain" className="clickable-icon" target="_blank" rel="noreferrer"><FaTwitterSquare className='sidebar-icon'/></a>
+            <a href = "https://github.com/kakhavai" className="clickable-icon" target="_blank" rel="noreferrer"><FaGithubSquare className='sidebar-icon' /></a>
+            <a href = "https://www.linkedin.com/in/kakhavain/" className="clickable-icon" target="_blank" rel="noreferrer"><FaLinkedin className='sidebar-icon'/></a>
+            <a href = "https://www.chess.com/stats/live/rapid/llunchbox" className="clickable-icon" target="_blank" rel="noreferrer"><div className='stacked-icon-parent'><FaChess className='stacked-icon-fg sidebar-icon'/> <FaSquare className='stacked-icon-bg sidebar-icon'/></div></a>
           </div>
         </div>
       {/* </SidebarHeader > */}
 
       {/* <SidebarContent> */}
-        <Menu iconShape="round" onClick={() => handlePickScreen('Education')}>
+        <Menu iconShape="round" onClick={() => handlePickScreen(<HomeScreen/>)}>
+          <MenuItem
+            icon={<FaHome />}
+          >
+            {'Home' }
+          </MenuItem>
+        </Menu>
+        <Menu iconShape="round" onClick={() => handlePickScreen(<EduScreen/>)}>
           <MenuItem
             icon={<FaHome />}
           >
             {'Education' }
           </MenuItem>
         </Menu>
-        <Menu iconShape="round" onClick={() => handlePickScreen('Experience')}>
+        <Menu iconShape="round" onClick={() => handlePickScreen(<ExperienceScreen/>)}>
           <MenuItem
             icon={<IoDocument />}
           >
             {'Experience' }
           </MenuItem>
         </Menu>
-        <Menu iconShape="round" onClick={() => handlePickScreen('Stocks')}>
+        <Menu iconShape="round" onClick={() => handlePickScreen(<StockScreen/>)}>
           <MenuItem
             icon={<GoGraph />}
           >
             {'Stock Analytics' }
           </MenuItem>
         </Menu>
-        <Menu iconShape="round" onClick={() => handlePickScreen('Contact')}>
+        <Menu iconShape="round" onClick={() => handlePickScreen(<ContactScreen/>)}>
           <MenuItem
             icon={<IoMdMail />}
           >
