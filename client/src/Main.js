@@ -28,7 +28,7 @@ const Main = ({
         <p>{'description' }</p>
         <div className="social-badges">
           <a
-            href="https://github.com/azouaoui-med/react-pro-sidebar"
+            href="https://github.com/kakhavai/kian-wiki"
             target="_blank"
             rel="noopener noreferrer"
           >
