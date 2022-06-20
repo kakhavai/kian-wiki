@@ -14,10 +14,10 @@
       "module-resolver",
       {
         "root": [
-          "./src"
+          "./"
         ],
         "alias": {
-          "utils": "./src/server/utils"
+          "utils": "./server/utils"
         }
       }
     ]
