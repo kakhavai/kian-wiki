@@ -1,9 +1,9 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
       "*": ["src/*"],
-      "utils/*": ["src/server/utils/*"]
+      "utils/*": ["server/utils/*"]
     }
   }
 }

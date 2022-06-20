@@ -68,5 +68,6 @@ $ docker pull ghcr.io/kakhavai/kian-wiki-nginx
 $ docker pull ghcr.io/kakhavai/kian-wiki-nodeserver
 $ POSTGRES_HOST=localhost
 $ docker-compose -f docker-compose-local.yml up
+$ wsl --shutdown
 ```
 
